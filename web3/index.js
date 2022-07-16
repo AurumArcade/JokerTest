@@ -77,7 +77,7 @@ async function connect() {
       options: {
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
-        }
+        },
       },
     },
 
