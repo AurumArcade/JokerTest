@@ -73,11 +73,14 @@ async function connect() {
 
     // BINANCE LIVE NET
     walletconnect: {
-      package: window.WalletConnectProvider.default,
+      package: WalletConnectProvider,
       options: {
         rpc: {
-          ["56"]: "https://bsc-dataseed.binance.org/",
+          56: "https://bsc-dataseed.binance.org/",
         },
+        network: "binance",
+        chainId: 56,
+        infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
       },
     },
 
