@@ -77,10 +77,7 @@ async function connect() {
       options: {
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
-        },
-        network: "binance",
-        chainId: 56,
-        infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
+        }
       },
     },
 
