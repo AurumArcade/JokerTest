@@ -60,27 +60,34 @@ window.web3gl.connect()
 */
 async function connect() {
   // uncomment to enable torus and walletconnect
-  const providerOptions = {
-    // torus: {
-    //   package: Torus,
-    // },
+  // const providerOptions = {
+  //   // torus: {
+  //   //   package: Torus,
+  //   // },
 
-    // ETH NETWORK
-    //walletconnect: {
-    //  package: window.WalletConnectProvider.default,
-    //  options: {
-    //	infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be"
-    //  },
-    //},
+  //   // ETH NETWORK
+  //   //walletconnect: {
+  //   //  package: window.WalletConnectProvider.default,
+  //   //  options: {
+  //   //	infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be"
+  //   //  },
+  //   //},
 
-    // BINANCE MAINNET
-    walletconnect: {
-      package: window.WalletConnectProvider.default,
-      options: {
-        rpc: { 56: "https://bsc-dataseed.binance.org/" },
-      },
+  //   // BINANCE MAINNET
+  //   walletconnect: {
+  //     package: window.WalletConnectProvider.default,
+  //     options: {
+  //       rpc: { 56: "https://bsc-dataseed.binance.org/" },
+  //     },
+  //   },
+  // };
+
+  const providerOptions = new WalletConnectProvider({
+    rpc: {
+      56: "https://bsc-dataseed.binance.org/",
+      // ...
     },
-  };
+  });
 
   const web3Modal = new window.Web3Modal.default({
     providerOptions,
