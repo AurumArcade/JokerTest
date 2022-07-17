@@ -25,7 +25,7 @@ document.body.appendChild(
 document.body.appendChild(
   Object.assign(document.createElement("script"), {
     type: "text/javascript",
-    src: "https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js",
+    src: "https://unpkg.com/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js",
   })
 );
 
@@ -64,32 +64,22 @@ async function connect() {
     // torus: {
     //   package: Torus,
     // },
-    // walletconnect: {
-    //   package: window.WalletConnectProvider.default,
-    //   options: {
-    //     infuraId: "00000000000000000000000000000000",
-    //   },
-    // },
 
-    // BINANCE LIVE NET
+    // ETH NETWORK
+    //walletconnect: {
+    //  package: window.WalletConnectProvider.default,
+    //  options: {
+    //	infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be"
+    //  },
+    //},
+
+    // BINANCE MAINNET
     walletconnect: {
-      package: WalletConnectProvider,
+      package: window.WalletConnectProvider.default,
       options: {
-        rpc: {
-          56: "https://bsc-dataseed.binance.org/",
-        },
+        rpc: { 56: "https://bsc-dataseed.binance.org/" },
       },
     },
-
-    // BINANCE TEST NET
-    // walletconnect: {
-    //   package: window.WalletConnectProvider.default,
-    //   options: {
-    //     rpc: {
-    //       97: "https://data-seed-prebsc-1-s1.binance.org:8545",
-    //     },
-    //   },
-    // },
   };
 
   const web3Modal = new window.Web3Modal.default({
