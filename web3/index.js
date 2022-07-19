@@ -59,16 +59,22 @@ paste this in inspector to connect to wallet:
 window.web3gl.connect()
 */
 async function connect() {
-  // uncomment to enable torus and walletconnect
+  const WalletConnectProvider = window.WalletConnectProvider.default;
+  walletConnectProvider = new WalletConnectProvider({
+    rpc: {
+      56: "https://bsc-dataseed.binance.org/",
+    },
+    network: "binance",
+  });
 
-  // 56: "https://bsc-dataseed.binance.org/",
   const providerOptions = {
     walletconnect: {
-      package: window.WalletConnectProvider.default,
+      package: WalletConnectProvider,
       options: {
         rpc: {
-          97: "https://data-seed-prebsc-1-s1.binance.org/", // BSC Testnet
+          56: "https://bsc-dataseed.binance.org/",
         },
+        network: "binance",
       },
     },
   };
