@@ -117,7 +117,8 @@ async function connect() {
 
   // set current network id
   web3gl.networkId = parseInt(provider.chainId);
-
+  alert("web3gl.networkId : " + web3gl.networkId);
+  alert("window.web3ChainId : " + window.web3ChainId);
   // if current network id is not equal to network id, then switch
   if (web3gl.networkId != window.web3ChainId) {
     try {
