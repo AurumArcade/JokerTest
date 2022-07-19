@@ -59,13 +59,25 @@ paste this in inspector to connect to wallet:
 window.web3gl.connect()
 */
 async function connect() {
-  const WalletConnectProvider = window.WalletConnectProvider.default;
-  walletConnectProvider = new WalletConnectProvider({
-    rpc: {
-      56: "https://bsc-dataseed.binance.org/",
+  const providerOptions = {
+    // torus: {
+    //   package: Torus,
+    // },
+    walletconnect: {
+      package: window.WalletConnectProvider.default,
+      options: {
+        infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
+      },
     },
-    network: "binance",
-  });
+  };
+
+  // const WalletConnectProvider = window.WalletConnectProvider.default;
+  // walletConnectProvider = new WalletConnectProvider({
+  //   rpc: {
+  //     56: "https://bsc-dataseed.binance.org/",
+  //   },
+  //   network: "binance",
+  // });
 
   // TEST ONE
   // const providerOptions = {
@@ -80,30 +92,30 @@ async function connect() {
   //   },
   // };
 
-  const providerOptions = {
-    injected: {
-      display: {
-        name: "Injected",
-        description: "Home-BrowserWallet",
-      },
-    },
-    walletconnect: {
-      package: WalletConnectProvider,
-      options: {
-        rpc: {
-          1: "https://bscrpc.com",
-          56: "https://bscrpc.com",
-        },
-      },
-    },
-    "custom-twt": {
-      display: {
-        name: "Trust",
-        description: "Trust Wallet",
-      },
-      package: "twt",
-    },
-  };
+  // const providerOptions = {
+  //   injected: {
+  //     display: {
+  //       name: "Injected",
+  //       description: "Home-BrowserWallet",
+  //     },
+  //   },
+  //   walletconnect: {
+  //     package: WalletConnectProvider,
+  //     options: {
+  //       rpc: {
+  //         1: "https://bscrpc.com",
+  //         56: "https://bscrpc.com",
+  //       },
+  //     },
+  //   },
+  //   "custom-twt": {
+  //     display: {
+  //       name: "Trust",
+  //       description: "Trust Wallet",
+  //     },
+  //     package: "twt",
+  //   },
+  // };
 
   const web3Modal = new window.Web3Modal.default({
     providerOptions,
