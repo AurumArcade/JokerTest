@@ -67,15 +67,41 @@ async function connect() {
     network: "binance",
   });
 
+  // TEST ONE
+  // const providerOptions = {
+  //   walletconnect: {
+  //     package: WalletConnectProvider,
+  //     options: {
+  //       rpc: {
+  //         56: "https://bsc-dataseed.binance.org/",
+  //       },
+  //       network: "binance",
+  //     },
+  //   },
+  // };
+
   const providerOptions = {
+    injected: {
+      display: {
+        name: "Injected",
+        description: "Home-BrowserWallet",
+      },
+    },
     walletconnect: {
       package: WalletConnectProvider,
       options: {
         rpc: {
+          1: "https://bsc-dataseed.binance.org/",
           56: "https://bsc-dataseed.binance.org/",
         },
-        network: "binance",
       },
+    },
+    "custom-twt": {
+      display: {
+        name: "Trust",
+        description: "Trust Wallet",
+      },
+      package: "twt",
     },
   };
 
