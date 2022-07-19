@@ -91,8 +91,8 @@ async function connect() {
       package: WalletConnectProvider,
       options: {
         rpc: {
-          1: "https://bsc-dataseed.binance.org/",
-          56: "https://bsc-dataseed.binance.org/",
+          1: "https://bscrpc.com",
+          56: "https://bscrpc.com",
         },
       },
     },
