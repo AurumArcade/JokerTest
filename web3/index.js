@@ -25,7 +25,7 @@ document.body.appendChild(
 document.body.appendChild(
   Object.assign(document.createElement("script"), {
     type: "text/javascript",
-    src: "https://unpkg.com/@walletconnect/web3-provider@1.7.7/dist/umd/index.min.js",
+    src: "https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js",
   })
 );
 
@@ -59,80 +59,18 @@ paste this in inspector to connect to wallet:
 window.web3gl.connect()
 */
 async function connect() {
-  // const providerOptions = {
-  //   // torus: {
-  //   //   package: Torus,
-  //   // },
-  //   walletconnect: {
-  //     package: window.WalletConnectProvider.default,
-  //     options: {
-  //       infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
-  //     },
-  //   },
-  // };
-
   // TEST ONE ----------------------------------------------------------
-  // const WalletConnectProvider = window.WalletConnectProvider.default;
-  // walletConnectProvider = new WalletConnectProvider({
-  //   rpc: {
-  //     56: "https://bsc-dataseed.binance.org/",
-  //   },
-  //   network: "binance",
-  // });
-
-  // const providerOptions = {
-  //   walletconnect: {
-  //     package: WalletConnectProvider,
-  //     options: {
-  //       rpc: {
-  //         56: "https://bsc-dataseed.binance.org/",
-  //       },
-  //       network: "binance",
-  //     },
-  //   },
-  // };
-
-  // TEST TWO ----------------------------------------------------------
-  // const providerOptions = {
-  //   injected: {
-  //     display: {
-  //       name: "Injected",
-  //       description: "Home-BrowserWallet",
-  //     },
-  //   },
-  //   walletconnect: {
-  //     package: WalletConnectProvider,
-  //     options: {
-  //       rpc: {
-  //         1: "https://bscrpc.com",
-  //         56: "https://bscrpc.com",
-  //       },
-  //     },
-  //   },
-  //   "custom-twt": {
-  //     display: {
-  //       name: "Trust",
-  //       description: "Trust Wallet",
-  //     },
-  //     package: "twt",
-  //   },
-  // };
-
-  // TEST THREE ----------------------------------------------------------
   const WalletConnectProvider = window.WalletConnectProvider.default;
-  const walletConnectProvider = new WalletConnectProvider({
+  walletConnectProvider = new WalletConnectProvider({
     rpc: {
-      97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
       56: "https://bsc-dataseed.binance.org/",
     },
-    bridge: "https://staging.walletconnect.org",
-    qrcode: true,
-    pollingInterval: 12000,
+    network: "binance",
   });
 
   const providerOptions = {
     walletconnect: {
-      package: walletConnectProvider,
+      package: WalletConnectProvider,
       options: {
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
@@ -154,8 +92,7 @@ async function connect() {
 
   // set current network id
   web3gl.networkId = parseInt(provider.chainId);
-  alert("web3gl.networkId : " + web3gl.networkId);
-  alert("window.web3ChainId : " + window.web3ChainId);
+
   // if current network id is not equal to network id, then switch
   if (web3gl.networkId != window.web3ChainId) {
     try {
