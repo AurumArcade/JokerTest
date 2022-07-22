@@ -55,23 +55,16 @@ paste this in inspector to connect to wallet:
 window.web3gl.connect()
 */
 async function connect() {
-  // Unpkg imports
-  const WalletConnectProvider = window.WalletConnectProvider.default;
-
-  console.log("Initializing example");
-  console.log("WalletConnectProvider is", WalletConnectProvider);
-  console.log("window.web3 is", window.web3);
-  // TEST ONE ----------------------------------------------------------
-
+  // uncomment to enable torus and walletconnect
   const providerOptions = {
     walletconnect: {
-      package: WalletConnectProvider,
+      package: window.WalletConnectProvider.default,
       options: {
+        infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
         network: "binance", // here
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
         },
-        network: "mainnet",
         qrcode: true,
         qrcodeModalOptions: {
           mobileLinks: ["metamask", "trust"],
@@ -102,14 +95,16 @@ async function connect() {
       });
     } catch {
       // if network isn't added, pop-up metamask to add
-      await addEthereumChain();
+      //await addEthereumChain();
     }
   }
 
   // set current account
   // provider.selectedAddress works for metamask and torus
   // provider.accounts[0] works for walletconnect
-  web3gl.connectAccount = provider.selectedAddress || provider.accounts[0];
+  if (provider.selectedAddress !== undefined)
+    web3gl.connectAccount = provider.selectedAddress;
+  else web3gl.connectAccount = provider.accounts[0];
 
   // refresh page if player changes account
   provider.on("accountsChanged", (accounts) => {
