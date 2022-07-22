@@ -55,11 +55,17 @@ paste this in inspector to connect to wallet:
 window.web3gl.connect()
 */
 async function connect() {
+  // Unpkg imports
+  const WalletConnectProvider = window.WalletConnectProvider.default;
+
+  console.log("Initializing example");
+  console.log("WalletConnectProvider is", WalletConnectProvider);
+  console.log("window.web3 is", window.web3);
   // TEST ONE ----------------------------------------------------------
 
   const providerOptions = {
     walletconnect: {
-      package: window.WalletConnectProvider.default,
+      package: WalletConnectProvider,
       options: {
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
