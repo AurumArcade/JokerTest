@@ -67,10 +67,15 @@ async function connect() {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
+        network: "binance", // here
         rpc: {
           56: "https://bsc-dataseed.binance.org/",
         },
-        network: "binance",
+        network: "mainnet",
+        qrcode: true,
+        qrcodeModalOptions: {
+          mobileLinks: ["metamask", "trust"],
+        },
       },
     },
   };
