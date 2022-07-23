@@ -114,6 +114,7 @@ async function connect() {
   }
 
   // set current account
+
   if (provider.selectedAddress !== undefined) web3gl.connectAccount = provider.selectedAddress;
   else web3gl.connectAccount = provider.accounts[0];
 
