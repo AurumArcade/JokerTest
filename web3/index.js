@@ -44,18 +44,22 @@ async function connect() {
     // torus: {
     //   package: Torus,
     // },
-	walletconnect: {
+    walletconnect: {
       package: window.WalletConnectProvider.default,
       options: {
-        infuraId: "0a5f720ee09a409cbbbc4d9bb3d549be",
-        network: "binance", // here
-        rpc: {
-          56: "https://bsc-dataseed.binance.org/",
-        },
-        qrcode: true,
-        qrcodeModalOptions: {
-          mobileLinks: ["metamask", "trust"],
-        },
+        infuraId: "635e974724fe49ca9b3414a63e5ac5d2",
+          rpc: {
+              137: 'https://polygon-rpc.com',
+           },
+           // chainId: "137",
+           network: "matic",
+           qrcode: true,
+           qrcodeModalOptions: {
+               mobileLinks: [
+                   "metamask",
+                   "trust",
+               ]
+           }
       },
     },
    //    "custom-polygon": {
